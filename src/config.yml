@@ -2,6 +2,7 @@
 ANTIENDERCHEST.MODULE: true
 HEADINFO.MODULE: true
 SIGNCOLOR.MODULE: true
+FOUNDDIAMONDS.MODULE: true
 
 ### Messages ###
 MESSAGE.INVSEE: "&aNow viewing the players inventory"
