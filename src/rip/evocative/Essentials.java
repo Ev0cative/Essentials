@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
@@ -20,6 +21,7 @@ import rip.evocative.command.commands.SudoCommand;
 import rip.evocative.listener.AntiEnderChestListener;
 import rip.evocative.listener.FoundDiamondsListener;
 import rip.evocative.listener.HeadInfoListener;
+import rip.evocative.listener.PlayerCounterListener;
 import rip.evocative.listener.SignColorsListener;
 
 public class Essentials extends JavaPlugin implements Listener
@@ -28,7 +30,9 @@ public class Essentials extends JavaPlugin implements Listener
 	@Getter public static Essentials instance;
 	public static FileConfiguration config;
 	public static File conf;
-
+	public File serverDataFile;
+	public FileConfiguration serverData;
+	
 	public void onEnable()
 	{
 		instance = this;
@@ -53,6 +57,9 @@ public class Essentials extends JavaPlugin implements Listener
 		conf = new File(this.getDataFolder(), "config.yml");
 		this.saveConfig();
 		this.saveDefaultConfig();
+		
+		serverDataFile = new File(this.getDataFolder(), "data.yml");
+		serverData = YamlConfiguration.loadConfiguration(this.serverDataFile);
 	}
 
 	public void save()
@@ -80,6 +87,7 @@ public class Essentials extends JavaPlugin implements Listener
 		pluginManager.registerEvents(new HeadInfoListener(), this);
 		pluginManager.registerEvents(new SignColorsListener(), this);
 		pluginManager.registerEvents(new FoundDiamondsListener(), this);
+		pluginManager.registerEvents(new PlayerCounterListener(), this);
 	}
 
 	public void loadCommands()
