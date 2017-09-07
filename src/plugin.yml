@@ -1,0 +1,11 @@
+name: Essentials
+main: io.complete.Essentials
+version: 1.0
+commands:
+ gamemode:
+   aliases: [gm]
+ dtc:
+ staffchat:
+ pin:
+ changepin:
+ judgementday:
